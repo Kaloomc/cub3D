@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 14:14:56 by fgarnier          #+#    #+#             */
-/*   Updated: 2025/12/27 01:31:18 by fgarnier         ###   ########.fr       */
+/*   Updated: 2025/12/27 15:46:49 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	set_orientation(t_game *game, int x, int y)
 {
 	game->player_x = x + 0.5;
 	game->player_y = y + 0.5;
+	printf("%f %f\n", game->player_x, game->player_y);
 	if (game->map[y][x] == 'N')
 		game->player_angle = 3 * M_PI / 2;
 	else if (game->map[y][x] == 'S')

@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 00:18:04 by fgarnier          #+#    #+#             */
-/*   Updated: 2025/12/27 01:46:55 by fgarnier         ###   ########.fr       */
+/*   Updated: 2025/12/27 15:30:30 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	init_texture(t_game *game, t_img *tex, char *path)
 
 void	init_assets(t_game *game)
 {
-	init_texture(game, &game->tex_north, "./textures/NO.xpm");
-	init_texture(game, &game->tex_south, "./textures/SO.xpm");
-	init_texture(game, &game->tex_east, "./textures/EA.xpm");
-	init_texture(game, &game->tex_west, "./textures/WE.xpm");
+	init_texture(game, &game->tex_north, ft_strtrim(game->paths[0], " \n"));
+	init_texture(game, &game->tex_south, ft_strtrim(game->paths[1], " \n"));
+	init_texture(game, &game->tex_east, ft_strtrim(game->paths[2], " \n"));
+	init_texture(game, &game->tex_west, ft_strtrim(game->paths[3], " \n"));
 	game->floor_color = 0x00333333;
 	game->ceiling_color = 0x0087CEEB;
 }

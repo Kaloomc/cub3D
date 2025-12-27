@@ -6,7 +6,7 @@
 #    By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/26 16:32:12 by fgarnier          #+#    #+#              #
-#    Updated: 2025/12/27 01:38:07 by fgarnier         ###   ########.fr        #
+#    Updated: 2025/12/27 16:20:14 by fgarnier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRC = main.c \
 	  load_texture.c \
 	  dda.c \
 	  free.c \
+	  parsing.c\
       $(GNL_SRC)
 
 # Génère les chemins des objets (ex: obj/main.o, obj/gnl/get_next_line.o)
@@ -57,7 +58,7 @@ all: $(NAME)
 
 # 1. Compilation des objets
 # J'ai ajouté -I$(GNL_PATH) pour trouver le .h de GNL
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: %.c cub3d.h
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -I$(MLX_PATH) -I$(LIBFT_PATH) -I$(GNL_PATH) -c $< -o $@
 

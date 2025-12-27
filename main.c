@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:23:11 by fgarnier          #+#    #+#             */
-/*   Updated: 2025/12/27 01:53:53 by fgarnier         ###   ########.fr       */
+/*   Updated: 2025/12/27 16:33:49 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ int	close_window(t_game *game)
 
 int	update(t_game *game)
 {
-	long long	now;
-
-	now = get_time();
-	if (now - game->last_update < 16)
-		return (0);
 	move(game);
 	graphic_update(game);
 	game->last_update = get_time();
@@ -53,6 +48,7 @@ int	start(t_game *game)
 	game->key_left = 0;
 	game->key_right = 0;
 	game->last_update = get_time();
+	game->skip_line_data = 0;
 	return (1);
 }
 
@@ -63,6 +59,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (0);
 	ft_bzero(&game, sizeof(t_game));
+	parse(&game, av[1]);
 	get_map(av[1], &game);
 	if (!game.map)
 		return (0);

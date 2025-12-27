@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 01:13:08 by fgarnier          #+#    #+#             */
-/*   Updated: 2025/12/27 01:19:38 by fgarnier         ###   ########.fr       */
+/*   Updated: 2025/12/27 16:25:14 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ void	raycast(t_game *game)
 	t_draw_tex	draw;
 
 	draw.x = 0;
-	angle = game->player_angle - (M_PI / 6);
-	step = (M_PI / 3) / SCREEN_W;
+	angle = game->player_angle - (M_PI / FOV);
+	step = (M_PI / (FOV)) / (SCREEN_W)*	2;
 	while (draw.x < SCREEN_W)
 	{
 		draw.dist = shoot_ray(game, angle, &side);

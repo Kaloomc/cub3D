@@ -6,11 +6,26 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 16:09:56 by fgarnier          #+#    #+#             */
-/*   Updated: 2025/12/26 16:41:04 by fgarnier         ###   ########.fr       */
+/*   Updated: 2025/12/27 16:06:12 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	skip_ligne(int fd, int line_to_skip)
+{
+	int		i;
+	char	*line;
+
+	i = 0;
+	while (i < line_to_skip)
+	{
+		line = get_next_line(fd);
+		if (line)
+			free(line);
+		i++;
+	}
+}
 
 int	ft_linelen(char *line)
 {
@@ -22,7 +37,7 @@ int	ft_linelen(char *line)
 	return (i);
 }
 
-int	get_line_nb(char *file_name)
+int	get_line_nb(t_game *game, char *file_name)
 {
 	char	*line;
 	int		i;
@@ -32,6 +47,7 @@ int	get_line_nb(char *file_name)
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		return (-1);
+	skip_ligne(fd, game->skip_line_data);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -51,13 +67,12 @@ char	**read_map(char *file_name, t_game *game)
 	int		i;
 
 	i = 0;
-	nb_line = get_line_nb(file_name);
+	nb_line = get_line_nb(game, file_name);
 	game->map_y = nb_line;
-	if (nb_line <= 2)
-		return (NULL);
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
+	skip_ligne(fd, game->skip_line_data);
 	map = malloc(sizeof(char *) * (nb_line + 1));
 	if (!map)
 	{
@@ -82,5 +97,10 @@ void	get_map(char *file_name, t_game *game)
 		(*game).map = NULL;
 		return ;
 	}
+	printf("%s", map[0]);
+	printf("%s", map[1]);
+	printf("%s", map[2]);
+	printf("%s", map[3]);
+	printf("%s", map[4]);
 	game->map = map;
 }
