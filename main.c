@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:23:11 by fgarnier          #+#    #+#             */
-/*   Updated: 2025/12/27 16:33:49 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/05 15:41:00 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	update(t_game *game)
 
 int	start(t_game *game)
 {
-	init_player_pos(game);
 	game->mlx = mlx_init();
 	if (!game->mlx)
 	{
@@ -60,7 +59,6 @@ int	main(int ac, char **av)
 		return (0);
 	ft_bzero(&game, sizeof(t_game));
 	parse(&game, av[1]);
-	get_map(av[1], &game);
 	if (!game.map)
 		return (0);
 	if (!start(&game))

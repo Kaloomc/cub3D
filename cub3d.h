@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:36:23 by fgarnier          #+#    #+#             */
-/*   Updated: 2025/12/27 16:39:45 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/05 15:38:30 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define SCREEN_H 720.0
 # define SCREEN_W 1280.0
 
-# define SPEED 0.2 * (1280.0 / SCREEN_W)
+# define SPEED 0.1 * (1280.0 / SCREEN_W)
 # define M_PI 3.14159265358979323846
 
 # define FOV 6
@@ -85,7 +85,7 @@ typedef struct s_game
 	double		player_y;
 	double		player_angle;
 
-	char		*paths[4];
+	char		*paths[5];
 	int			skip_line_data;
 
 	t_img		tex_north;
@@ -152,5 +152,8 @@ void			free_mlx(t_game *game);
 
 // parse
 void			parse(t_game *game, char *filename);
+
+// flood_fill
+int				check_map_closed(t_game *game);
 
 #endif

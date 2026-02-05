@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 14:51:35 by fgarnier          #+#    #+#             */
-/*   Updated: 2025/12/27 16:09:06 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/05 15:47:25 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,48 @@ int	get_path_number(char *line)
 		return (-1);
 }
 
+static int	parse_color_component(char **line)
+{
+	int	num;
+
+	num = 0;
+	while (**line && (**line == ' ' || **line == '\t'))
+		(*line)++;
+	if (!ft_isdigit(**line))
+		return (-1);
+	while (**line && ft_isdigit(**line))
+	{
+		num = num * 10 + (**line - '0');
+		(*line)++;
+	}
+	while (**line && (**line == ' ' || **line == '\t'))
+		(*line)++;
+	return (num);
+}
+
 int	convert_rgb(char *line)
 {
-	(void)line;
-	return (0);
+	int	r;
+	int	g;
+	int	b;
+
+	line++;
+	r = parse_color_component(&line);
+	if (*line == ',')
+		line++;
+	else
+		return (-1);
+	g = parse_color_component(&line);
+	if (*line == ',')
+		line++;
+	else
+		return (-1);
+	b = parse_color_component(&line);
+	if (*line != '\n' && *line != '\0')
+		return (-1);
+	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+		return (-1);
+	return ((r << 16) | (g << 8) | b);
 }
 
 void	get_texture_path(t_game *game, char *file_name)
@@ -47,19 +85,39 @@ void	get_texture_path(t_game *game, char *file_name)
 		if (get_path_number(line) != -1)
 			game->paths[get_path_number(line)] = ft_strdup(&line[2]);
 		else if (line[0] == 'C')
+		{
 			game->ceiling_color = convert_rgb(line);
+			if (game->ceiling_color == -1)
+			{
+				printf("Error\nInvalid Ceiling Color\n");
+				free_mlx(game);
+			}
+		}
 		else if (line[0] == 'F')
+		{
 			game->floor_color = convert_rgb(line);
+			if (game->floor_color == -1)
+			{
+				printf("Error\nInvalid Floor Color\n");
+				free_mlx(game);
+			}
+		}
 		else if (line[0] != '\n')
+		{
+			free(line);
 			break ;
+		}
 		free(line);
 		line = get_next_line(fd);
 	}
-	free(line);
 	close(fd);
 }
 
 void	parse(t_game *game, char *filename)
 {
 	get_texture_path(game, filename);
+	get_map(filename, game);
+	init_player_pos(game);
+	if (!check_map_closed(game))
+		free_mlx(game);
 }

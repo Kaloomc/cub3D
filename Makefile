@@ -6,7 +6,7 @@
 #    By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/26 16:32:12 by fgarnier          #+#    #+#              #
-#    Updated: 2025/12/27 16:20:14 by fgarnier         ###   ########.fr        #
+#    Updated: 2026/02/05 15:02:32 by fgarnier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRC = main.c \
 	  dda.c \
 	  free.c \
 	  parsing.c\
+	  flood_fill.c \
       $(GNL_SRC)
 
 # Génère les chemins des objets (ex: obj/main.o, obj/gnl/get_next_line.o)

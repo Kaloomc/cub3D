@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 00:18:04 by fgarnier          #+#    #+#             */
-/*   Updated: 2025/12/27 15:30:30 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/05 15:32:43 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void	init_texture(t_game *game, t_img *tex, char *path)
 	if (!tex->img)
 	{
 		printf("Error\nImpossible de charger la texture : %s\n", path);
+		free(path);
 		free_mlx(game);
-		exit(1);
 	}
+	free(path);
 	tex->addr = mlx_get_data_addr(tex->img, &tex->bits_per_pixel,
 			&tex->line_len, &tex->endian);
 }
@@ -32,6 +33,4 @@ void	init_assets(t_game *game)
 	init_texture(game, &game->tex_south, ft_strtrim(game->paths[1], " \n"));
 	init_texture(game, &game->tex_east, ft_strtrim(game->paths[2], " \n"));
 	init_texture(game, &game->tex_west, ft_strtrim(game->paths[3], " \n"));
-	game->floor_color = 0x00333333;
-	game->ceiling_color = 0x0087CEEB;
 }

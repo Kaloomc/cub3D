@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 16:09:56 by fgarnier          #+#    #+#             */
-/*   Updated: 2025/12/27 16:06:12 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/05 15:28:20 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	skip_ligne(int fd, int line_to_skip)
 	char	*line;
 
 	i = 0;
-	while (i < line_to_skip)
+	while (i < line_to_skip - 1)
 	{
 		line = get_next_line(fd);
 		if (line)
@@ -94,13 +94,9 @@ void	get_map(char *file_name, t_game *game)
 	if (!map)
 	{
 		printf("Error\nUnreadable Map\n");
+		
 		(*game).map = NULL;
 		return ;
 	}
-	printf("%s", map[0]);
-	printf("%s", map[1]);
-	printf("%s", map[2]);
-	printf("%s", map[3]);
-	printf("%s", map[4]);
 	game->map = map;
 }
