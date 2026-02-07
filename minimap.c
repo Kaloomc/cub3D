@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 00:54:19 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/07 03:02:04 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/07 14:53:25 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	draw_cursor(t_game *game, int offset, int size)
 {
-	// cursor
 	(void)game;
 	(void)offset;
 	(void)size;

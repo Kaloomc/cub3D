@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 14:51:35 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/07 00:34:09 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/07 14:55:57 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,11 @@ void	get_texture_path(t_game *game, char *file_name)
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		return ;
-	line = get_next_line(fd);
-	line = ft_strtrim(line, " ");
+	line = " ";
 	while (line)
 	{
+		line = get_next_line(fd);
+		line = ft_strtrim(line, " ");
 		game->skip_line_data++;
 		if (get_path_number(line) != -1)
 			game->paths[get_path_number(line)] = ft_strdup(&line[2]);
@@ -93,9 +94,8 @@ void	get_texture_path(t_game *game, char *file_name)
 			break ;
 		}
 		free(line);
-		line = get_next_line(fd);
-		line = ft_strtrim(line, " ");
 	}
+	get_next_line(-1);
 	close(fd);
 }
 
@@ -104,6 +104,4 @@ void	parse(t_game *game, char *filename)
 	get_texture_path(game, filename);
 	get_map(filename, game);
 	init_player_pos(game);
-	if (!check_map_closed(game))
-		free_mlx(game);
 }

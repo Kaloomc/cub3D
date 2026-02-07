@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 14:56:16 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/07 02:43:30 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/07 14:50:53 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int	is_valid_pos(t_game *game, double x, double y)
 		return (0);
 	if (real_x < 0 || real_x >= (int)ft_strlen(game->map[real_y]))
 		return (0);
-	if (game->map[real_y][real_x] == '1')
+	if (game->map[real_y][real_x] == '1' || game->map[real_y][real_x] == '\n'
+		|| game->map[real_y][real_x] == ' '
+		|| game->map[real_y][real_x] == '\0')
 		return (0);
 	return (1);
 }

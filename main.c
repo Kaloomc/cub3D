@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:23:11 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/05 15:41:00 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/07 14:46:35 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	main(int ac, char **av)
 	if (!start(&game))
 		return (0);
 	init_assets(&game);
+	if (!check_map_closed(&game))
+		free_mlx(&game);
 	game.img.img = mlx_new_image(game.mlx, SCREEN_W, SCREEN_H);
 	game.img.addr = mlx_get_data_addr(game.img.img, &game.img.bits_per_pixel,
 			&game.img.line_len, &game.img.endian);

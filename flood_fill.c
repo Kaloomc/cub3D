@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 22:14:22 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/06 22:14:24 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/07 14:44:18 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,11 @@ int	check_map_closed(t_game *game)
 
 	start_x = (int)game->player_x;
 	start_y = (int)game->player_y;
+	if (game->player_x == 0 && game->player_y == 0 && game->map[0][0] == '1')
+	{
+		printf("Error\nNo player start position found\n");
+		return (0);
+	}
 	map_copy = copy_map(game);
 	if (!map_copy)
 		return (0);
