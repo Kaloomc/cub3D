@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 16:09:56 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/05 15:28:20 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/06 22:12:13 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void	get_map(char *file_name, t_game *game)
 	if (!map)
 	{
 		printf("Error\nUnreadable Map\n");
-		
 		(*game).map = NULL;
 		return ;
 	}

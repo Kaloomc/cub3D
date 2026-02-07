@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 14:57:40 by fgarnier          #+#    #+#             */
-/*   Updated: 2025/12/27 01:21:31 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/06 23:06:27 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	key_press(int keycode, t_game *game)
 		game->key_left = 1;
 	if (keycode == 65363)
 		game->key_right = 1;
+	if (keycode == 65307)
+		free_mlx(game);
 	return (0);
 }
 

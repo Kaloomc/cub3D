@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 00:18:04 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/05 15:32:43 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/07 00:46:13 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,12 @@ void	init_texture(t_game *game, t_img *tex, char *path)
 
 void	init_assets(t_game *game)
 {
-	init_texture(game, &game->tex_north, ft_strtrim(game->paths[0], " \n"));
-	init_texture(game, &game->tex_south, ft_strtrim(game->paths[1], " \n"));
-	init_texture(game, &game->tex_east, ft_strtrim(game->paths[2], " \n"));
-	init_texture(game, &game->tex_west, ft_strtrim(game->paths[3], " \n"));
+	game->paths[0] = ft_strtrim(game->paths[0], " \n");
+	init_texture(game, &game->tex_north, game->paths[0]);
+	game->paths[1] = ft_strtrim(game->paths[1], " \n");
+	init_texture(game, &game->tex_south, game->paths[1]);
+	game->paths[2] = ft_strtrim(game->paths[2], " \n");
+	init_texture(game, &game->tex_east, game->paths[2]);
+	game->paths[3] = ft_strtrim(game->paths[3], " \n");
+	init_texture(game, &game->tex_west, game->paths[3]);
 }

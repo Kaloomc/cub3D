@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 18:15:05 by fgarnier          #+#    #+#             */
-/*   Updated: 2025/10/15 08:21:51 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/07 00:29:25 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_isset(char const c, char const *set)
 	return (0);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char *s1, char const *set)
 {
 	size_t	start;
 	size_t	end;
@@ -46,5 +46,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!res)
 		return (NULL);
 	ft_strlcpy(res, s1 + start, len + 1);
+	free(s1);
 	return (res);
 }

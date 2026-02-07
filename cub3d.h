@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:36:23 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/05 15:38:30 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/07 00:55:33 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,13 @@ void			free_mlx(t_game *game);
 
 // parse
 void			parse(t_game *game, char *filename);
+void			get_color(char *line, t_game *game);
+int				convert_rgb(char *line);
 
 // flood_fill
 int				check_map_closed(t_game *game);
+
+// minimap
+void			draw_minimap(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 14:12:51 by fgarnier          #+#    #+#             */
-/*   Updated: 2025/10/17 15:33:02 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/06 22:54:58 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,13 @@ char	*get_next_line(int fd)
 	static char	*stash;
 	char		*line;
 
+	if (fd < 0)
+	{
+		if (stash)
+			free(stash);
+		stash = NULL;
+		return (NULL);
+	}
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	stash = read_and_stash(fd, stash);

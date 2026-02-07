@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 14:51:35 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/05 15:47:25 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/07 00:34:09 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,29 +79,14 @@ void	get_texture_path(t_game *game, char *file_name)
 	if (fd < 0)
 		return ;
 	line = get_next_line(fd);
+	line = ft_strtrim(line, " ");
 	while (line)
 	{
 		game->skip_line_data++;
 		if (get_path_number(line) != -1)
 			game->paths[get_path_number(line)] = ft_strdup(&line[2]);
-		else if (line[0] == 'C')
-		{
-			game->ceiling_color = convert_rgb(line);
-			if (game->ceiling_color == -1)
-			{
-				printf("Error\nInvalid Ceiling Color\n");
-				free_mlx(game);
-			}
-		}
-		else if (line[0] == 'F')
-		{
-			game->floor_color = convert_rgb(line);
-			if (game->floor_color == -1)
-			{
-				printf("Error\nInvalid Floor Color\n");
-				free_mlx(game);
-			}
-		}
+		else if ((line[0] == 'C') || (line[0] == 'F'))
+			get_color(line, game);
 		else if (line[0] != '\n')
 		{
 			free(line);
@@ -109,6 +94,7 @@ void	get_texture_path(t_game *game, char *file_name)
 		}
 		free(line);
 		line = get_next_line(fd);
+		line = ft_strtrim(line, " ");
 	}
 	close(fd);
 }

@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/* */
-/* :::      ::::::::   */
-/* check_map.c                                        :+:      :+:    :+:   */
-/* +:+ +:+         +:+     */
-/* By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
-/* +#+#+#+#+#+   +#+           */
-/* Created: 2025/12/27 16:45:00 by fgarnier          #+#    #+#             */
-/* Updated: 2025/12/27 16:45:00 by fgarnier         ###   ########.fr       */
-/* */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flood_fill.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/06 22:14:22 by fgarnier          #+#    #+#             */
+/*   Updated: 2026/02/06 22:14:24 by fgarnier         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
@@ -72,13 +72,12 @@ static int	fill(char **map, int x, int y, int height)
 
 int	check_map_closed(t_game *game)
 {
-	char **map_copy;
-	int start_x;
-	int start_y;
+	char	**map_copy;
+	int		start_x;
+	int		start_y;
 
 	start_x = (int)game->player_x;
 	start_y = (int)game->player_y;
-
 	map_copy = copy_map(game);
 	if (!map_copy)
 		return (0);
