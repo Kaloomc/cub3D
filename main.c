@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:23:11 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/07 14:46:35 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/09 14:11:48 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	start(t_game *game)
 	game->key_right = 0;
 	game->last_update = get_time();
 	game->skip_line_data = 0;
+	game->minimap_zoom = 10;
 	return (1);
 }
 

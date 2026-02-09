@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 00:54:19 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/07 14:53:25 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/09 14:14:47 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 void	draw_cursor(t_game *game, int offset, int size)
 {
-	(void)game;
-	(void)offset;
-	(void)size;
+	my_mlx_pixel_put(game, size / 2 + offset, size / 2 + offset, 0);
 }
 
 void	draw_minimap(t_game *game)
@@ -35,8 +33,8 @@ void	draw_minimap(t_game *game)
 		while (y < size + offset)
 		{
 			if (is_valid_pos(game, (game->player_x + ((double)x - (size / 2.0))
-						/ 10.0), (game->player_y + ((double)y - (size / 2.0))
-						/ 10.0)))
+						/ game->minimap_zoom), (game->player_y + ((double)y
+							- (size / 2.0)) / game->minimap_zoom)))
 				my_mlx_pixel_put(game, x + offset, y + offset, 16777215);
 			else
 				my_mlx_pixel_put(game, x + offset, y + offset, 0);

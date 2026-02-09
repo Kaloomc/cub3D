@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:36:23 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/07 00:55:33 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/02/09 14:11:23 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ typedef struct s_game
 	double		player_x;
 	double		player_y;
 	double		player_angle;
+
+	int			minimap_zoom;
 
 	char		*paths[5];
 	int			skip_line_data;
