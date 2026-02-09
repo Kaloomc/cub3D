@@ -6,7 +6,7 @@
 #    By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/26 16:32:12 by fgarnier          #+#    #+#              #
-#    Updated: 2026/02/07 01:02:53 by fgarnier         ###   ########.fr        #
+#    Updated: 2026/02/09 17:55:07 by ldesboui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ $(OBJ_DIR)/%.o: %.c cub3d.h
 	$(CC) $(CFLAGS) -I$(MLX_PATH) -I$(LIBFT_PATH) -I$(GNL_PATH) -c $< -o $@
 
 # 2. Linkage final
-$(NAME): $(OBJ)
+$(NAME): $(MLX_PATH) $(OBJ)
 	@echo "Compilation de la MLX..."
 	@make -C $(MLX_PATH) > /dev/null 2>&1
 	@echo "Compilation de la Libft..."
@@ -74,6 +74,8 @@ $(NAME): $(OBJ)
 	@echo "Compilation de Cub3D..."
 	$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) $(LIBFT_FLAGS) -o $(NAME)
 
+$(MLX_PATH):
+	git clone https://github.com/42paris/minilibx-linux.git $(MLX_PATH)
 clean:
 	rm -rf $(OBJ_DIR)
 	@make -C $(MLX_PATH) clean > /dev/null
@@ -81,6 +83,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -rf $(MLX_PATH)
 	@make -C $(LIBFT_PATH) fclean
 
 re: fclean all
