@@ -6,43 +6,44 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 00:54:19 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/09 22:42:56 by ldesboui         ###   ########.fr       */
+/*   Updated: 2026/03/17 16:39:08 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+unsigned int	get_pixel(t_img *img, int x, int y)
+{
+	return (*(unsigned int *)(img->addr
+		+ (y * img->line_len + x * (img->bits_per_pixel / 8))));
+}
+
 static void	draw_fov(t_game *game, int size, int offset)
 {
-	int		i;
 	double	x;
 	double	y;
 
-	i = 0;
 	x = (double)(size / 2 + offset);
 	y = (double)(size / 2 + offset);
-	while (i < 5)
+	while (x > 25 && y > 25 && x < 225 && y < 225 && get_pixel(&(game->img), x, y) != 0)
 	{
+		my_mlx_pixel_put(game, (int)x, (int)y, 10);
 		x += cos(game->player_angle - (M_PI / 6));
 		y += sin(game->player_angle - (M_PI / 6));
-		my_mlx_pixel_put(game, (int)x, (int)y, 10);
-		++i;
 	}
-	i = 0;
 	x = (double)(size / 2 + offset);
 	y = (double)(size / 2 + offset);
-	while (i < 5)
+	while (x > 25 && y > 25 && x < 225 && y < 225 && get_pixel(&(game->img), x, y) != 0)
 	{
+		my_mlx_pixel_put(game, (int)x, (int)y, 10);
 		x += cos(game->player_angle + (M_PI / 6));
 		y += sin(game->player_angle + (M_PI / 6));
-		my_mlx_pixel_put(game, (int)x, (int)y, 10);
-		++i;
 	}
 }
 
 void	draw_cursor(t_game *game, int offset, int size)
 {
-	my_mlx_pixel_put(game, size / 2 + offset, size / 2 + offset, 0);
+	my_mlx_pixel_put(game, size / 2 + offset, size / 2 + offset, 16777215);
 	draw_fov(game, size, offset);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 14:57:40 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/09 17:27:40 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/03/12 15:41:46 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	key_press(int keycode, t_game *game)
 {
-	printf("%d\n", keycode);
 	if (keycode == 65453 && game->minimap_zoom > 1)
 		game->minimap_zoom -= 1;
 	if (keycode == 65451)

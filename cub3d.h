@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:36:23 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/09 14:11:23 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/03/12 15:48:59 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void			init_player_pos(t_game *game);
 // dda
 void			perform_dda(t_game *game, t_ray *ray);
 
-// keyboard
+// keyboard and mouse
 int				key_press(int keycode, t_game *game);
 int				key_release(int keycode, t_game *game);
 
