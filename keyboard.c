@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 14:57:40 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/03/12 15:41:46 by ldesboui         ###   ########.fr       */
+/*   Updated: 2026/04/15 14:24:20 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,23 @@ int	key_release(int keycode, t_game *game)
 		game->key_left = 0;
 	if (keycode == 65363)
 		game->key_right = 0;
+	return (0);
+}
+
+int	mouse_move(int x, int y, t_game *game)
+{
+	int	delta_x;
+
+	(void)y;
+	delta_x = x - (SCREEN_W / 2);
+	if (delta_x != 0)
+	{
+		game->player_angle += delta_x * MOUSE_SENS;
+		if (game->player_angle < 0)
+			game->player_angle += 2 * M_PI;
+		if (game->player_angle > 2 * M_PI)
+			game->player_angle -= 2 * M_PI;
+		mlx_mouse_move(game->mlx, game->win, SCREEN_W / 2, SCREEN_H / 2);
+	}
 	return (0);
 }

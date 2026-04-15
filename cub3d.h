@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:36:23 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/03/12 15:48:59 by ldesboui         ###   ########.fr       */
+/*   Updated: 2026/04/15 14:23:40 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define SPEED 0.1 * (1280.0 / SCREEN_W)
 # define M_PI 3.14159265358979323846
-
+# define MOUSE_SENS 0.0001
 # define FOV 6
 
 # include "gnl/get_next_line.h"
@@ -139,7 +139,7 @@ void			perform_dda(t_game *game, t_ray *ray);
 // keyboard and mouse
 int				key_press(int keycode, t_game *game);
 int				key_release(int keycode, t_game *game);
-
+int				mouse_move(int x, int y, t_game *game);
 // draw
 void			draw_wall_texture(t_game *game, t_draw_tex *args);
 
