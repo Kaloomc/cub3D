@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 14:51:35 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/07 14:55:57 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/28 14:51:26 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,22 @@ void	get_texture_path(t_game *game, char *file_name)
 	close(fd);
 }
 
-void	parse(t_game *game, char *filename)
+void	parse(t_game *game, char *fname)
 {
-	get_texture_path(game, filename);
-	get_map(filename, game);
-	init_player_pos(game);
+	if (ft_strlen(fname) >= 4)
+	{
+		if (fname[ft_strlen(fname) - 1] == 'b'
+			&& fname[ft_strlen(fname) - 2] == 'u'
+			&& fname[ft_strlen(fname) - 3] == 'c'
+			&& fname[ft_strlen(fname) - 4] == '.')
+		{
+			get_texture_path(game, fname);
+			get_map(fname, game);
+			init_player_pos(game);
+		}
+		else
+			printf("Error\nFile is not .cub\n");
+	}
+	else
+		printf("Error\nFile is not .cub\n");
 }

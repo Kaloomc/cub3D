@@ -42,6 +42,8 @@ void	init_player_pos(t_game *game)
 	int	x;
 
 	y = 0;
+	if (!game->map)
+		return ;
 	while (game->map[y])
 	{
 		x = 0;

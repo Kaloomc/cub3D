@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 00:54:19 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/03/17 16:39:08 by ldesboui         ###   ########.fr       */
+/*   Updated: 2026/04/28 14:27:52 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static void	draw_fov(t_game *game, int size, int offset)
 
 	x = (double)(size / 2 + offset);
 	y = (double)(size / 2 + offset);
-	while (x > 25 && y > 25 && x < 225 && y < 225 && get_pixel(&(game->img), x, y) != 0)
+	while (x > 25 && y > 25 && x < 225 && y < 225
+		&& get_pixel(&(game->img), x, y) != 0)
 	{
 		my_mlx_pixel_put(game, (int)x, (int)y, 10);
 		x += cos(game->player_angle - (M_PI / 6));
@@ -33,7 +34,8 @@ static void	draw_fov(t_game *game, int size, int offset)
 	}
 	x = (double)(size / 2 + offset);
 	y = (double)(size / 2 + offset);
-	while (x > 25 && y > 25 && x < 225 && y < 225 && get_pixel(&(game->img), x, y) != 0)
+	while (x > 25 && y > 25 && x < 225 && y < 225
+		&& get_pixel(&(game->img), x, y) != 0)
 	{
 		my_mlx_pixel_put(game, (int)x, (int)y, 10);
 		x += cos(game->player_angle + (M_PI / 6));

@@ -6,17 +6,17 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:36:23 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/15 15:46:39 by ldesboui         ###   ########.fr       */
+/*   Updated: 2026/04/28 14:31:24 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef H_CUBE3D
-# define H_CUBE3D
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # define SCREEN_H 720.0
 # define SCREEN_W 1280.0
 
-# define SPEED 0.1 * (1280.0 / SCREEN_W)
+# define SPEED 0.1
 # define M_PI 3.14159265358979323846
 # define MOUSE_SENS 0.001
 # define FOV 6
