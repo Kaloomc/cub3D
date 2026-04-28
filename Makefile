@@ -6,7 +6,7 @@
 #    By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/26 16:32:12 by fgarnier          #+#    #+#              #
-#    Updated: 2026/04/28 17:07:54 by fgarnier         ###   ########.fr        #
+#    Updated: 2026/04/28 18:24:08 by fgarnier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,18 +55,20 @@ $(OBJ_DIR)/%.o: %.c cub3d.h
 	$(CC) $(CFLAGS) -I$(MLX_PATH) -I$(LIBFT_PATH) -I$(GNL_PATH) -c $< -o $@
 
 $(NAME): $(MLX_PATH) $(OBJ)
-	@echo "Compilation de la MLX..."
+	@echo "MLX Compilation..."
 	@make -C $(MLX_PATH) > /dev/null 2>&1
-	@echo "Compilation de la Libft..."
+	@echo "Libft Compilation..."
 	@make -C $(LIBFT_PATH)
-	@echo "Compilation de Cub3D..."
+	@echo "Cub3D Compilation..."
 	$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) $(LIBFT_FLAGS) -o $(NAME)
 
 $(MLX_PATH):
+	@echo "MinilibX..."
 	git clone https://github.com/42paris/minilibx-linux.git $(MLX_PATH)
+
 clean:
 	rm -rf $(OBJ_DIR)
-	@make -C $(MLX_PATH) clean > /dev/null
+	@if [ -d "$(MLX_PATH)" ]; then make -C $(MLX_PATH) clean > /dev/null; fi
 	@make -C $(LIBFT_PATH) clean
 
 fclean: clean
