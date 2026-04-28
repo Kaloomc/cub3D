@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 14:51:35 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/28 15:12:44 by ldesboui         ###   ########.fr       */
+/*   Updated: 2026/04/28 16:16:27 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ void	get_texture_path(t_game *game, char *file_name)
 		line = ft_strtrim(line, " ");
 		game->skip_line_data++;
 		if (get_path_number(line) != -1)
-			game->paths[get_path_number(line)] = ft_strdup(&line[2]);
+			assign_path(get_path_number(line), line, game);
 		else if ((line[0] == 'C') || (line[0] == 'F'))
-			get_color(line, game);
+			get_color(line, game, fd);
 		else if (line[0] != '\n')
 		{
 			free(line);
@@ -101,11 +101,12 @@ void	get_texture_path(t_game *game, char *file_name)
 
 void	parse(t_game *game, char *fname)
 {
+	game->ceiling_color = -1;
+	game->floor_color = -1;
 	if (ft_strlen(fname) >= 4)
 	{
-		if (fname[ft_strlen(fname) - 1] == 'b'
-			&& fname[ft_strlen(fname) - 2] == 'u'
-			&& fname[ft_strlen(fname) - 3] == 'c'
+		if (fname[ft_strlen(fname) - 1] == 'b' && fname[ft_strlen(fname)
+			- 2] == 'u' && fname[ft_strlen(fname) - 3] == 'c'
 			&& fname[ft_strlen(fname) - 4] == '.')
 		{
 			get_texture_path(game, fname);

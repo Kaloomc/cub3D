@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 00:18:04 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/28 15:25:48 by ldesboui         ###   ########.fr       */
+/*   Updated: 2026/04/28 16:18:04 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,20 @@ void	init_texture(t_game *game, t_img *tex, char *path)
 
 void	init_assets(t_game *game)
 {
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (!game->paths[i])
+		{
+			printf("Error\nA texture path is missing\n");
+			free_mlx(game);
+			exit(1);
+		}
+		game->paths[i] = ft_strtrim(game->paths[i], " \n");
+		i++;
+	}
 	game->paths[0] = ft_strtrim(game->paths[0], " \n");
 	init_texture(game, &game->tex_north, game->paths[0]);
 	game->paths[1] = ft_strtrim(game->paths[1], " \n");

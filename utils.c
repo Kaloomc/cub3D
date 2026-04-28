@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 14:14:56 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/28 15:25:16 by ldesboui         ###   ########.fr       */
+/*   Updated: 2026/04/28 15:51:03 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,20 @@ void	init_player_pos(t_game *game, int x, int y)
 	if (count != 1)
 	{
 		printf("Error\nThere is a problem with player position\n");
+		free_mlx(game);
+		exit(0);
+	}
+}
+
+void	assign_path(int texture_nbr, char *line, t_game *game)
+{
+	if (!game->paths[texture_nbr])
+		game->paths[texture_nbr] = ft_strdup(&line[2]);
+	else
+	{
+		get_next_line(-1);
+		free(line);
+		printf("Error\nThere is problem with texture\n");
 		free_mlx(game);
 		exit(0);
 	}
