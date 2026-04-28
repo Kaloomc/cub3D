@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 14:14:56 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/28 17:22:33 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:31:56 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	init_player_pos(t_game *game, int x, int y)
 	}
 }
 
-void	assign_path(int texture_nbr, char *line, t_game *game)
+void	assign_path(int texture_nbr, char *line, t_game *game, int fd)
 {
 	if (!game->paths[texture_nbr])
 		game->paths[texture_nbr] = ft_strdup(&line[2]);
@@ -74,7 +74,20 @@ void	assign_path(int texture_nbr, char *line, t_game *game)
 		get_next_line(-1);
 		free(line);
 		printf("Error\nThere is problem with texture\n");
+		close(fd);
 		free_mlx(game);
 		exit(0);
+	}
+}
+
+void	checkdir(char *av)
+{
+	struct stat	path_stat;
+
+	stat(av, &path_stat);
+	if (S_ISDIR(path_stat.st_mode))
+	{
+		printf("Error\n'%s' is a directory\n", av);
+		exit(1);
 	}
 }

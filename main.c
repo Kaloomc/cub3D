@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:23:11 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/28 17:22:51 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:30:14 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
+	checkdir(av[1]);
 	ft_bzero(&game, sizeof(t_game));
 	parse(&game, av[1]);
 	if (!game.map)

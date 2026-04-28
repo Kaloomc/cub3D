@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:36:23 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/28 16:36:12 by ldesboui         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:50:29 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/time.h>
+# include <sys/stat.h>
 # include <unistd.h>
 
 typedef struct s_img
@@ -148,6 +149,8 @@ double			shoot_ray(t_game *game, double angle, int *side_ret);
 void			raycast(t_game *game);
 // utils.c
 long long		get_time(void);
+void			checkdir(char *av);
+void			map_missing(int fd, t_game *game);
 
 // free
 void			free_mlx(t_game *game);
@@ -156,7 +159,7 @@ void			free_mlx(t_game *game);
 void			parse(t_game *game, char *filename);
 void			get_color(char *line, t_game *game, int fd);
 int				convert_rgb(char *line);
-void			assign_path(int texture_nbr, char *line, t_game *game);
+void			assign_path(int texture_nbr, char *line, t_game *game, int fd);
 
 // flood_fill
 int				check_map_closed(t_game *game);

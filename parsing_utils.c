@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 17:47:34 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/28 16:15:56 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:51:38 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ static void	color_exit(char *line, t_game *game, int fd)
 	printf("Error\nInvalid Color\n");
 	free(line);
 	get_next_line(-1);
+	free_mlx(game);
+}
+
+void	map_missing(int fd, t_game *game)
+{
+	close (fd);
+	printf("Error\nMap is missing\n");
 	free_mlx(game);
 }
 

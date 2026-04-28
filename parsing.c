@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 14:51:35 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/28 17:27:54 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:48:18 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,11 @@ void	get_texture_path(t_game *game, char *file_name)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			return ;
+			map_missing(fd, game);
 		line = ft_strtrim(line, " ");
 		game->skip_line_data++;
 		if (get_path_number(line) != -1)
-			assign_path(get_path_number(line), line, game);
+			assign_path(get_path_number(line), line, game, fd);
 		else if (((line[0] == 'C') || (line[0] == 'F')))
 			get_color(line, game, fd);
 		else if (line[0] != '\n')
@@ -108,7 +108,7 @@ void	parse(t_game *game, char *fname)
 	if (ft_strlen(fname) >= 4)
 	{
 		if (fname[ft_strlen(fname) - 1] == 'b' && fname[ft_strlen(fname)
-			- 2] == 'u' && fname[ft_strlen(fname) - 3] == 'c'
+				- 2] == 'u' && fname[ft_strlen(fname) - 3] == 'c'
 			&& fname[ft_strlen(fname) - 4] == '.')
 		{
 			get_texture_path(game, fname);
