@@ -18,7 +18,7 @@ void	init_texture(t_game *game, t_img *tex, char *path)
 			&tex->endian);
 	if (!tex->img)
 	{
-		printf("Error\nImpossible de charger la texture : %s\n", path);
+		printf("Error\nFailed to load texture : %s\n", path);
 		free_mlx(game);
 	}
 	tex->addr = mlx_get_data_addr(tex->img, &tex->bits_per_pixel,
