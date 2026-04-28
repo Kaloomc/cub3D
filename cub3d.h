@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:36:23 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/28 16:16:12 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/28 16:36:12 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,5 +163,6 @@ int				check_map_closed(t_game *game);
 
 // minimap
 void			draw_minimap(t_game *game);
-
+//in main
+int				char_check(char **map);
 #endif

@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:23:11 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/15 14:25:19 by ldesboui         ###   ########.fr       */
+/*   Updated: 2026/04/28 16:47:39 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,29 @@ int	start(t_game *game)
 	game->last_update = get_time();
 	game->skip_line_data = 0;
 	game->minimap_zoom = 10;
+	return (1);
+}
+
+int	char_check(char **map)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (map[x])
+	{
+		y = 0;
+		while (map[x][y])
+		{
+			if (!ft_strchr("10ENSW \n\0\t", map[x][y]))
+			{
+				printf("Error\nInvalid char in map\n");
+				return (0);
+			}
+			++y;
+		}
+		++x;
+	}
 	return (1);
 }
 

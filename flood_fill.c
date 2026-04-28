@@ -84,7 +84,7 @@ int	check_map_closed(t_game *game)
 	if (!fill(map_copy, start_x, start_y, game->map_y))
 	{
 		free_map_copy(map_copy);
-		printf("Error\nMap is not closed (leak detected)\n");
+		printf("Error\nMap error\n");
 		return (0);
 	}
 	free_map_copy(map_copy);

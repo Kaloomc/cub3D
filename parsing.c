@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 14:51:35 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/28 16:16:27 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/28 16:39:35 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,13 @@ void	parse(t_game *game, char *fname)
 	if (ft_strlen(fname) >= 4)
 	{
 		if (fname[ft_strlen(fname) - 1] == 'b' && fname[ft_strlen(fname)
-			- 2] == 'u' && fname[ft_strlen(fname) - 3] == 'c'
+				- 2] == 'u' && fname[ft_strlen(fname) - 3] == 'c'
 			&& fname[ft_strlen(fname) - 4] == '.')
 		{
 			get_texture_path(game, fname);
 			get_map(fname, game);
+			if (!char_check(game->map))
+				free_mlx(game);
 			init_player_pos(game, 0, 0);
 		}
 		else
