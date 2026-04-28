@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 14:51:35 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/28 16:39:35 by ldesboui         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:27:54 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	get_path_number(char *line)
 {
+	if (!line)
+		return (-1);
 	if (line[0] == 'N' && line[1] == 'O')
 		return (0);
 	else if (line[0] == 'S' && line[1] == 'O')
@@ -82,19 +84,19 @@ void	get_texture_path(t_game *game, char *file_name)
 	while (line)
 	{
 		line = get_next_line(fd);
+		if (!line)
+			return ;
 		line = ft_strtrim(line, " ");
 		game->skip_line_data++;
 		if (get_path_number(line) != -1)
 			assign_path(get_path_number(line), line, game);
-		else if ((line[0] == 'C') || (line[0] == 'F'))
+		else if (((line[0] == 'C') || (line[0] == 'F')))
 			get_color(line, game, fd);
 		else if (line[0] != '\n')
-		{
-			free(line);
 			break ;
-		}
 		free(line);
 	}
+	free(line);
 	get_next_line(-1);
 	close(fd);
 }
@@ -106,10 +108,15 @@ void	parse(t_game *game, char *fname)
 	if (ft_strlen(fname) >= 4)
 	{
 		if (fname[ft_strlen(fname) - 1] == 'b' && fname[ft_strlen(fname)
-				- 2] == 'u' && fname[ft_strlen(fname) - 3] == 'c'
+			- 2] == 'u' && fname[ft_strlen(fname) - 3] == 'c'
 			&& fname[ft_strlen(fname) - 4] == '.')
 		{
 			get_texture_path(game, fname);
+			if (game->ceiling_color == -1 || game->floor_color == -1)
+			{
+				printf("Error\nA color is missing\n");
+				free_mlx(game);
+			}
 			get_map(fname, game);
 			if (!char_check(game->map))
 				free_mlx(game);

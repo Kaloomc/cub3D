@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 14:14:56 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/28 15:51:03 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:22:33 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	init_player_pos(t_game *game, int x, int y)
 	}
 	if (count != 1)
 	{
-		printf("Error\nThere is a problem with player position\n");
+		printf("Error\nThere is a no/too many player position\n");
 		free_mlx(game);
 		exit(0);
 	}
