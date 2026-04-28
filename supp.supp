@@ -1,0 +1,61 @@
+{
+   mlx_mouse_hide_x11
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:mlx_mouse_hide
+   ...
+}
+
+{
+   x11_xrm_get_string_database
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:XrmGetStringDatabase
+   ...
+}
+
+{
+   x11_xgetdefault
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:XGetDefault
+   ...
+}
+
+{
+   dl_open_system_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_dl_open
+   ...
+}
+{
+	x11_locale_database_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_XlcCreateLocaleDataBase
+   ...
+}
+
+{
+   x11_xopen_lc_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_XOpenLC
+   ...
+}
+
+{
+   x11_xrm_init_parse_info_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_XrmInitParseInfo
+   ...
+}
