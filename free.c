@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 01:32:51 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/07 00:47:32 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/28 15:26:46 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ void	free_map(char **map)
 	free(map);
 }
 
+static void	free_path(char **path)
+{
+	free (path[0]);
+	free (path[1]);
+	free (path[2]);
+	free (path[3]);
+}
+
 void	free_mlx(t_game *game)
 {
 	free_texture(game);
@@ -52,5 +60,6 @@ void	free_mlx(t_game *game)
 		mlx_destroy_display(game->mlx);
 	if (game->mlx)
 		free(game->mlx);
+	free_path(game->paths);
 	exit(0);
 }

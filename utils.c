@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 14:14:56 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/05 15:13:59 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/28 15:25:16 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,11 @@ void	set_orientation(t_game *game, int x, int y)
 	return ;
 }
 
-void	init_player_pos(t_game *game)
+void	init_player_pos(t_game *game, int x, int y)
 {
-	int	y;
-	int	x;
+	int	count;
 
-	y = 0;
+	count = 0;
 	if (!game->map)
 		return ;
 	while (game->map[y])
@@ -52,10 +51,16 @@ void	init_player_pos(t_game *game)
 			if (ft_strchr("NSEW", game->map[y][x]))
 			{
 				set_orientation(game, x, y);
-				return ;
+				++count;
 			}
-			x++;
+			++x;
 		}
 		y++;
+	}
+	if (count != 1)
+	{
+		printf("Error\nThere is a problem with player position\n");
+		free_mlx(game);
+		exit(0);
 	}
 }

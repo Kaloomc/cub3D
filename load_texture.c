@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 00:18:04 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/07 00:46:13 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/28 15:25:48 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ void	init_texture(t_game *game, t_img *tex, char *path)
 	if (!tex->img)
 	{
 		printf("Error\nImpossible de charger la texture : %s\n", path);
-		free(path);
 		free_mlx(game);
 	}
-	free(path);
 	tex->addr = mlx_get_data_addr(tex->img, &tex->bits_per_pixel,
 			&tex->line_len, &tex->endian);
 }

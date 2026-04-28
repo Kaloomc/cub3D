@@ -6,14 +6,14 @@
 #    By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/26 16:32:12 by fgarnier          #+#    #+#              #
-#    Updated: 2026/04/15 14:12:57 by ldesboui         ###   ########.fr        #
+#    Updated: 2026/04/28 15:20:02 by ldesboui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 # --- CONFIG LIBFT ---
 LIBFT_PATH = ./libft

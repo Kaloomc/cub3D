@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 14:51:35 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/28 14:51:26 by ldesboui         ###   ########.fr       */
+/*   Updated: 2026/04/28 15:12:44 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	parse(t_game *game, char *fname)
 		{
 			get_texture_path(game, fname);
 			get_map(fname, game);
-			init_player_pos(game);
+			init_player_pos(game, 0, 0);
 		}
 		else
 			printf("Error\nFile is not .cub\n");

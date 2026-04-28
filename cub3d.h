@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:36:23 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/28 14:31:24 by ldesboui         ###   ########.fr       */
+/*   Updated: 2026/04/28 15:13:12 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void			graphic_update(t_game *game);
 // player
 void			move(t_game *game);
 int				is_valid_pos(t_game *game, double x, double y);
-void			init_player_pos(t_game *game);
+void			init_player_pos(t_game *game, int x, int y);
 
 // dda
 void			perform_dda(t_game *game, t_ray *ray);
