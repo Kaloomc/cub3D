@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 01:13:08 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/05 14:58:29 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/28 14:19:09 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ static int	get_tex_x(t_game *game, double dist, double angle, int side)
 		wall_x = game->player_x + dist * cos(angle);
 	wall_x -= floor(wall_x);
 	tex_x = (int)(wall_x * 64.0);
-	if ((side == 0 || side == 1) && cos(angle) > 0)
+	if ((side == 0 || side == 1) && cos(angle) < 0)
 		tex_x = 64 - tex_x - 1;
-	if ((side == 2 || side == 3) && sin(angle) < 0)
+	if ((side == 2 || side == 3) && sin(angle) > 0)
 		tex_x = 64 - tex_x - 1;
 	return (tex_x);
 }

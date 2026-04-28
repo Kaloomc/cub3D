@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 00:36:23 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/15 14:23:40 by ldesboui         ###   ########.fr       */
+/*   Updated: 2026/04/15 15:46:39 by ldesboui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define SPEED 0.1 * (1280.0 / SCREEN_W)
 # define M_PI 3.14159265358979323846
-# define MOUSE_SENS 0.0001
+# define MOUSE_SENS 0.001
 # define FOV 6
 
 # include "gnl/get_next_line.h"
